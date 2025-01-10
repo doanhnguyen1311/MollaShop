@@ -1,0 +1,33 @@
+﻿@model Shipper
+@{
+    ViewBag.Title = "Xóa Shipper";
+}
+
+<div class="box box-danger">
+    <div class="box-body">
+        <form action="~/Shipper/Delete/@Model.ShipperID" method="post">
+            <!-- Tên shipper -->
+            <div class="form-group">
+                <label for="shipperName"><b>Tên shipper:</b></label>
+                <p class="form-control-static form-control">@Model.ShipperName</p>
+            </div>
+
+            <!-- Số điện thoại -->
+            <div class="form-group">
+                <label for="phoneNumber"><b>Số điện thoại:</b></label>
+                <p class="form-control-static form-control">@Model.Phone</p>
+            </div>
+
+            <!-- Nút xóa và quay lại -->
+            <div class="form-group text-right">
+                @if (!SV21T1080007.BusinessLayers.CommonDataService.InUsedShipper(Model.ShipperID))
+                {
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fa fa-trash"></i> Xóa Shipper
+                    </button>
+                }
+                <a href="~/Shipper" class="btn btn-default">Quay lại</a>
+            </div>
+        </form>
+    </div>
+</div>

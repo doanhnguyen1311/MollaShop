@@ -1,0 +1,193 @@
+﻿@{
+    var data = ApplicationContext.GetSessionData<Customer>("user");
+}
+
+<header class="header">
+    <div class="header-top">
+        <div class="container">
+            <div class="header-left">
+                <div class="header-dropdown">
+                    <a href="#">Usd</a>
+                    <div class="header-menu">
+                        <ul>
+                            <li><a href="#">Eur</a></li>
+                            <li><a href="#">Usd</a></li>
+                        </ul>
+                    </div><!-- End .header-menu -->
+                </div><!-- End .header-dropdown -->
+
+                <div class="header-dropdown">
+                    <a href="#">Eng</a>
+                    <div class="header-menu">
+                        <ul>
+                            <li><a href="#">English</a></li>
+                            <li><a href="#">French</a></li>
+                            <li><a href="#">Spanish</a></li>
+                        </ul>
+                    </div><!-- End .header-menu -->
+                </div><!-- End .header-dropdown -->
+            </div><!-- End .header-left -->
+
+            <div class="header-right">
+                <ul class="top-menu">
+                    <li>
+                        <a href="#">Links</a>
+                        <ul>
+                            <li><a href="tel:#"><i class="icon-phone"></i>Call: +0123 456 789</a></li>
+                            <li><a href="wishlist.html"><i class="icon-heart-o"></i>Yêu thích <span>(3)</span></a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                            @if (data != null)
+                            {
+                                <li>Xin chào <a style="font-weight: bold;">@data.CustomerName</a></li>
+                                <li><a href="~/Auth/UserInfo"><i class="icon-user"></i>Thông tin cá nhân</a></li>
+                                <li><a style="cursor: pointer;" onclick="window.location.href='/Auth/Logout'">Đăng xuất</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="~/Auth" ><i class="icon-user"></i>Login</a></li>
+                            }
+                        </ul>
+                    </li>
+                </ul><!-- End .top-menu -->
+            </div><!-- End .header-right -->
+        </div><!-- End .container -->
+    </div><!-- End .header-top -->
+
+    <div class="header-middle sticky-header">
+        <div class="container">
+            <div class="header-left">
+                <button class="mobile-menu-toggler">
+                    <span class="sr-only">Toggle mobile menu</span>
+                    <i class="icon-bars"></i>
+                </button>
+
+                <a href="index.html" class="logo">
+                    <img src="~/assets/images/logo.png" alt="Molla Logo" width="105" height="25">
+                </a>
+
+                <nav class="main-nav">
+                    <ul class="menu sf-arrows">
+                        <li class="megamenu-container active">
+                            <a href="~/Home" class="">Trang chủ</a>
+
+
+                        </li>
+                        <li>
+                            <a href="~/Product" class="">Sản phẩm</a>
+
+
+                        </li>
+                        <li>
+                            <a href="~/Checkout/ListOrder" class="">Đơn hàng</a>
+
+                        </li>
+                    </ul><!-- End .menu -->
+                </nav><!-- End .main-nav -->
+            </div><!-- End .header-left -->
+
+            <div class="header-right">
+                <div class="header-search">
+                    <a href="#" class="search-toggle" role="button" title="Search"><i class="icon-search"></i></a>
+                    <form action="#" method="get">
+                        <div class="header-search-wrapper">
+                            <label for="q" class="sr-only">Search</label>
+                            <input type="search" class="form-control searchInput" name="q" id="q" placeholder="Tìm kiếm" required>
+                        </div><!-- End .header-search-wrapper -->
+                    </form>
+                </div><!-- End .header-search -->
+                <div class="dropdown compare-dropdown">
+                    <div class="dropdown-menu dropdown-menu-right searchResult">
+                        <!-- end id searchResult -->
+                    </div><!-- End .dropdown-menu -->
+                </div><!-- End .compare-dropdown -->
+
+                <div class="dropdown cart-dropdown">
+                    <a href="~/Cart" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false" data-display="static">
+                        <i class="icon-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                    </div><!-- End .dropdown-menu -->
+                </div><!-- End .cart-dropdown -->
+            </div><!-- End .header-right -->
+        </div><!-- End .container -->
+    </div><!-- End .header-middle -->
+</header><!-- End .header -->
+
+<script>
+    $(document).ready(function () {
+        function LoadCart() {
+            $.ajax({
+                url: '/Cart/CartHover',
+                method: 'GET',
+                success: function (res) {
+                    $('.dropdown-menu-right').html(res);
+                    let count = $('#count-cart').val();
+                    $('.cart-count').text(count);
+                },
+                error: function (err) {
+                    console.log('err: ' + err);
+                }
+            });
+        }
+        LoadCart();
+
+        function RemoveCart(productID) {
+            $.ajax({
+                url: '/Product/RemoveCart',
+                method: 'GET',
+                data: { productid: productID },
+                success: function (res) {
+                    if (res.success) {
+                        LoadCart();
+                    }
+                },
+                error: function (err) {
+                    console.log("err: " + err);
+                }
+            });
+        }
+
+        $(document).on('click', '.btn-remove', function () {
+            let id = $(this).data('productid');
+            toastr.warning("Xóa sản phẩm thành công!");
+            RemoveCart(id);
+        });
+
+        $(document).on('click', '.btn-update-cart', function () {
+            LoadCart();
+        });
+
+        function Search(Keyword) {
+            $.ajax({
+                url: '/Product/GetListProductByKeyword',
+                method: 'GET',
+                data: { keyword: Keyword },
+                success: function (res) {
+                    $('.searchResult').html(res);
+                },
+                error: function (err) {
+                    console.log("err trong GetListProductByKeyword: " + err);
+                }
+            });
+        }
+        $(document).on('keyup', '.searchInput', function () {
+            let key = $(this).val();
+            if (key === "") {
+                $('.searchResult').css({
+                    visibility: 'hidden'
+                });
+            } else {
+                $('.searchResult').show();
+                $('.searchResult').css({
+                    visibility: 'visible',
+                    opacity: '1'
+                });
+            }
+            Search(key);
+        });
+
+    });
+</script>

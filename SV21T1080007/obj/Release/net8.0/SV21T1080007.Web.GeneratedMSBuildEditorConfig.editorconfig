@@ -1,0 +1,95 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = SV21T1080007.Web
+build_property.RootNamespace = SV21T1080007.Web
+build_property.ProjectDir = C:\Users\doanh\Desktop\LapTrinhUngDungWeb\SV21T1080007\SV21T1080007\SV21T1080007\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\doanh\Desktop\LapTrinhUngDungWeb\SV21T1080007\SV21T1080007\SV21T1080007
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/doanh/Desktop/LapTrinhUngDungWeb/SV21T1080007/SV21T1080007/SV21T1080007/Views/Category/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/doanh/Desktop/LapTrinhUngDungWeb/SV21T1080007/SV21T1080007/SV21T1080007/Views/Customer/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/doanh/Desktop/LapTrinhUngDungWeb/SV21T1080007/SV21T1080007/SV21T1080007/Views/Employee/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/doanh/Desktop/LapTrinhUngDungWeb/SV21T1080007/SV21T1080007/SV21T1080007/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/doanh/Desktop/LapTrinhUngDungWeb/SV21T1080007/SV21T1080007/SV21T1080007/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/doanh/Desktop/LapTrinhUngDungWeb/SV21T1080007/SV21T1080007/SV21T1080007/Views/Order/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/doanh/Desktop/LapTrinhUngDungWeb/SV21T1080007/SV21T1080007/SV21T1080007/Views/Order/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/doanh/Desktop/LapTrinhUngDungWeb/SV21T1080007/SV21T1080007/SV21T1080007/Views/Product/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/doanh/Desktop/LapTrinhUngDungWeb/SV21T1080007/SV21T1080007/SV21T1080007/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/doanh/Desktop/LapTrinhUngDungWeb/SV21T1080007/SV21T1080007/SV21T1080007/Views/Shared/_ControlSideBar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Db250cm9sU2lkZUJhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/doanh/Desktop/LapTrinhUngDungWeb/SV21T1080007/SV21T1080007/SV21T1080007/Views/Shared/_Footer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Gb290ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/doanh/Desktop/LapTrinhUngDungWeb/SV21T1080007/SV21T1080007/SV21T1080007/Views/Shared/_Header.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9IZWFkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/doanh/Desktop/LapTrinhUngDungWeb/SV21T1080007/SV21T1080007/SV21T1080007/Views/Shared/_SideBar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TaWRlQmFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/doanh/Desktop/LapTrinhUngDungWeb/SV21T1080007/SV21T1080007/SV21T1080007/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/doanh/Desktop/LapTrinhUngDungWeb/SV21T1080007/SV21T1080007/SV21T1080007/Views/Shipper/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hpcHBlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/doanh/Desktop/LapTrinhUngDungWeb/SV21T1080007/SV21T1080007/SV21T1080007/Views/Supplier/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwcGxpZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/doanh/Desktop/LapTrinhUngDungWeb/SV21T1080007/SV21T1080007/SV21T1080007/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/doanh/Desktop/LapTrinhUngDungWeb/SV21T1080007/SV21T1080007/SV21T1080007/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/doanh/Desktop/LapTrinhUngDungWeb/SV21T1080007/SV21T1080007/SV21T1080007/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-tv4umn9llp

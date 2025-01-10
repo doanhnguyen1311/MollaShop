@@ -1,0 +1,284 @@
+﻿@{
+    ViewData["Title"] = "Trang chủ";
+}
+
+@section styles {
+    <style>
+        .lua_chon {
+            display: flex;
+            justify-content: space-evenly;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            border: 1px solid gray;
+            padding: 15px;
+            border-radius: 20px;
+            width: 23rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            flex-shrink: 0; /* không cho flexbox thay đổi kích thước */
+        }
+
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(0,0,0, 0.5);
+            }
+
+        .customer {
+            background: linear-gradient(to right, #7edfff, #007da4);
+            color: #000000;
+        }
+
+        .doanhthu {
+            background: linear-gradient(to right, #70ff8d, #00ca98);
+            color: #000000;
+        }
+
+        .sanpham {
+            background: linear-gradient(90deg, #aba800, #ffffc4);
+            color: #000;
+        }
+
+        .donhang {
+            background: linear-gradient(to left, #ffa7a7, #ff1336);
+            color: #000;
+        }
+
+        canvas {
+            width: 100% !important;
+        }
+
+        .btn {
+            border-radius: 17px;
+        }
+
+        .btn-success {
+            color: #fff;
+            background: linear-gradient(45deg, black, transparent);
+        }
+
+            .btn-success:hover {
+                background: linear-gradient(91deg, #e9dbdb, #e5cfcf, #e3c6b5, #edc4b7, #e3baba);
+                border-color: #cd8b8b;
+                color: #000;
+            }
+
+        .btn-warning {
+            background: linear-gradient(45deg, black, transparent);
+            border: 1px solid orange;
+        }
+
+            .btn-warning:hover {
+                background: linear-gradient(45deg, #ffffff, transparent);
+                border-color: #a3947c;
+                color: #000;
+            }
+
+        .btn-info {
+            background: linear-gradient(45deg, black, transparent);
+            border-color: yellow;
+        }
+
+            .btn-info:hover {
+                background: linear-gradient(45deg, #b4fcff, #baf9ff);
+                border-color: #000;
+                color: #000;
+            }
+
+        .btn-primary {
+            background: linear-gradient(45deg, black, transparent);
+            border-color: deeppink;
+        }
+
+            .btn-primary:hover {
+                background: linear-gradient(45deg, #baffcf, #ffe6e6);
+                border-color: #000;
+                color: #000;
+            }
+
+        /*
+                                        .content-header > h1 {
+                                            margin: 0;
+                                            color: transparent;
+                                            font-size: 34px;
+                                            -webkit-text-stroke: 0.9px black;
+                                            text-shadow: 1px 1px #353457;
+                                        }
+                                        */
+
+        /*navbar*/
+        /* .main-header .navbar {
+                                             -webkit-transition: margin-left .3s ease-in-out;
+                                             -o-transition: margin-left .3s ease-in-out;
+                                             transition: margin-left .3s ease-in-out;
+                                             background: linear-gradient(45deg, #3b0202, #690000, #7e2323, #7b4600, #414c00, #1f4800);
+                                             margin-bottom: 0;
+                                             margin-left: 230px;
+                                             border: none;
+                                             min-height: 50px;
+                                             border-radius: 0;
+                                         } */
+
+        /*content*/
+        /*  .content {
+                                             min-height: 250px;
+                                             padding: 15px;
+                                             margin-right: auto;
+                                             margin-left: auto;
+                                             padding-left: 15px;
+                                             padding-right: 15px;
+                                             background: linear-gradient(45deg, #000000, #4c0000, #313131, #382333, #3d2448, #304a5d, #0c2b87);
+                                         } */
+
+
+        /* .skin-blue .content-header {
+                                             background: linear-gradient(135deg, #ffffff, #b49a9a, #ba4949, #9b5189, #804e96, #567f9c, #6273a4);
+                                         }
+
+                                         .main-header .logo {
+                                             background: linear-gradient(45deg, black, #470000);
+                                         }
+
+                                         .main-sidebar{
+                                             background: linear-gradient(68deg, #000000, #7e4a4a);
+                                         } */
+
+        .fas, .fa-brands, .fa {
+            opacity: 0.3;
+        }
+
+        .card {
+            margin: 0 5px;
+        }
+
+        h3 {
+        }
+    </style>
+}
+
+<div class="text-center">
+    <div class="d-flex justify-content-around mb-4 lua_chon">
+        <div class="card customer text-center">
+            <div class="card-body">
+                <h3 class="card-title">200<span style="margin:0 10px ;"></span><i class="fas fa-user"></i></h3>
+                <h5 class="card-title">Khách hàng</h5>
+                <a href="~/Customer" class="btn btn-success">Xem Chi Tiết <i class="fa-solid fa-arrow-trend-down"></i></a>
+            </div>
+        </div>
+        <div class="card doanhthu text-center">
+            <div class="card-body">
+                <h3 class="card-title">
+                    1,200,000VND
+                    <span style="margin:0 10px ;"></span>
+                    <i class="fas fa-sack-xmark"></i>
+                </h3>
+                <h5 class="card-title">Doanh thu tháng này</h5>
+                <a href="" class="btn btn-warning">Xem Chi Tiết <i class="fa-solid fa-arrow-trend-down"></i></a>
+            </div>
+        </div>
+        <div class="card sanpham text-center">
+            <div class="card-body">
+                <h3 class="card-title">
+                    367
+                    <span style="margin:0 10px ;"></span>
+                    <i class="fa-brands fa-shopify"></i>
+                </h3>
+                <h5 class="card-title">Sản phẩm trong kho</h5>
+                <a href="~/Product" class="btn btn-info">Xem Chi Tiết <i class="fa-solid fa-arrow-trend-down"></i></a>
+            </div>
+        </div>
+        <div class="card donhang text-center">
+            <div class="card-body">
+                <h3 class="card-title">
+                    100
+                    <span style="margin:0 10px ;"></span>
+                    <i class="fa fa-clipboard-list"></i>
+                </h3>
+                <h5 class="card-title">Đơn hàng trong tháng</h5>
+                <a href="~/Order" class="btn btn-primary">Xem Chi Tiết <i class="fa-solid fa-arrow-trend-down"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Biểu đồ -->
+    <canvas id="myAreaChart"></canvas>
+    <script>
+        console.log(window.innerWidth);
+        console.log(window.innerHeight);
+
+        const ctx = document.getElementById('myAreaChart').getContext('2d');
+
+        ctx.fillContext = "#fff";
+        const myAreaChart = new Chart(ctx, {
+            type: 'line', // sử dụng loại biểu đồ là 'line'
+            data: {
+                labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7'], // nhãn cho trục x
+                datasets: [{
+                    label: 'Doanh thu', // tiêu đề của dữ liệu
+                    data: [10000000, 20000000, 30000000, 15000000, 25000000, 35000000, 40000000], // dữ liệu cho trục y
+                    backgroundColor: 'rgba(100, 188, 136, 0.7)', // màu nền
+                    borderColor: 'rgb(0, 104, 36)', // màu viền
+                    borderWidth: 1, // độ dày viền
+                    fill: false // lấp đầy diện tích dưới đường biểu diễn
+                }
+                
+                ,
+            {
+                label: 'Chi phí',
+                data: [5000000, 10000000, 15000000, 8000000, 12000000, 18000000, 22000000],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1,
+                fill: false
+            },
+            {
+                label: 'Lợi nhuận',
+                data: [5000000, 10000000, 15000000, 7000000, 13000000, 17000000, 18000000],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1,
+                fill: false
+            },
+            {
+                label: 'Số đơn hàng',
+                data: [300, 400, 500, 350, 450, 600, 700],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1,
+                fill: false
+            }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true, // bắt đầu từ 0
+                        ticks: {
+                            color: 'gray', // màu chữ cho trục y
+                            callback: function (value) { return value.toLocaleString(); } // định dạng số
+                        },
+                        grid: {
+                            color: 'rgba(0,0,0,0.1)' // màu lưới cho trục y
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: 'gray', // màu chữ cho trục x
+                        },
+                        grid: {
+                            color: 'rgba(0,0,0,0.1)' // màu lưới cho trục x
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: 'gray' // màu chữ cho nhãn
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</div>

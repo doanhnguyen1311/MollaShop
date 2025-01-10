@@ -1,0 +1,54 @@
+﻿@model Supplier
+@{
+    ViewBag.Title = "Xóa Nhà Cung Cấp";
+}
+
+<div class="box box-danger">
+    <div class="box-body">
+        <form method="post" action="~/Supplier/Delete/@Model.SupplierID">
+            <!-- Tên nhà cung cấp -->
+            <div class="form-group">
+                <label for="supplierName"><b>Tên nhà cung cấp:</b></label>
+                <p class="form-control-static form-control">@Model.SupplierName</p>
+            </div>
+
+            <!-- Tên hợp đồng -->
+            <div class="form-group">
+                <label for="contractName"><b>Tên hợp đồng:</b></label>
+                <p class="form-control-static form-control">@Model.ContactName</p>
+            </div>
+
+            <!-- Tỉnh thành -->
+            <div class="form-group">
+                <label for="province"><b>Tỉnh thành:</b></label>
+                <p class="form-control-static form-control">@Model.Province</p>
+            </div>
+
+            <!-- Địa chỉ -->
+            <div class="form-group">
+                <label for="address"><b>Địa chỉ:</b></label>
+                <p class="form-control-static form-control">@Model.Address</p>
+            </div>
+
+            <!-- Số điện thoại -->
+            <div class="form-group">
+                <label for="phoneNumber"><b>Số điện thoại:</b></label>
+                <p class="form-control-static form-control">@Model.Phone</p>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+                <label for="email"><b>Email:</b></label>
+                <p class="form-control-static form-control">@Model.Email</p>
+            </div>
+
+            <!-- Nút xóa và quay lại -->
+            <div class="form-group text-right">
+                <button type="submit" class="btn btn-danger">
+                    <i class="fa fa-trash"></i> Xóa nhà cung cấp
+                </button>
+                <a href="~/Supplier" class="btn btn-default">Quay lại</a>
+            </div>
+        </form>
+    </div>
+</div>

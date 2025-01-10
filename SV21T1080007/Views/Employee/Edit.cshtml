@@ -1,0 +1,142 @@
+﻿@model SV21T1080007.DomainModels.Employee
+@{
+    <script>
+        //     document.addEventListener("DOMContentLoaded", function () {
+        //     document.querySelector('form').addEventListener('submit', function (event) {
+        //         Kiểm tra nếu không có tệp ảnh mới, xóa giá trị của trường ảnh
+        //         var photoInput = document.querySelector('input[type="file"][name="@nameof(Model.Photo)"]');
+        //         if (!photoInput.files.length) {
+        //             Nếu không có tệp ảnh mới được chọn, không gửi tệp ảnh
+        //             photoInput.setAttribute('disabled', 'true');
+        //         }
+        //     });
+
+        //     Xem trước ảnh khi chọn tệp
+        //     var photoInput = document.querySelector('input[type="file"][name="@nameof(Model.Photo)"]');
+        //     photoInput.addEventListener('change', function () {
+        //         var preview = document.getElementById('Photo');
+        //         if (this.files && this.files[0]) {
+        //             var reader = new FileReader();
+        //             reader.onload = function (e) {
+        //                 preview.src = e.target.result; Cập nhật nguồn ảnh xem trước
+        //             };
+        //             reader.readAsDataURL(this.files[0]); Đọc tệp dưới dạng Data URL
+        //         } else {
+        //             Nếu không có tệp mới, giữ nguyên ảnh cũ
+        //             preview.src = '@Url.Content("~/dist/img/user4-128x128.jpg")'; Đặt lại ảnh mặc định
+        //         }
+        //     });
+        // });
+    </script>
+}
+
+@section styles{
+    <style>
+        .col-sm-10 {
+            width: 83.33333333%;
+            margin-left: 153px;
+        }
+        .form-horizontal .control-label {
+            padding-top: -7px;
+            margin-bottom: -84px;
+            text-align: right;
+        }
+    </<style>
+}
+
+<div class="box box-primary">
+    <div class="box-body">
+        <form class="form-horizontal" method="post" enctype="multipart/form-data" action="~/Employee/Save">
+            <input type="hidden" value="@Model.EmployeeID" name="@nameof(Model.EmployeeID)" />
+            <input type="hidden" name="@nameof(Model.Photo)" value="@Model.Photo" /> <!-- Input ẩn cho ảnh cũ -->
+            <div class="form-group">
+                <label class="control-label col-sm-2">Họ và tên: @Html.ValidationMessage(nameof(Model.FullName), new { @style = "color: red" })</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="@nameof(Model.FullName)" value="@Model.FullName" autofocus />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Ngày sinh: @Html.ValidationMessage(nameof(Model.BirthDate), new { @style = "color: red" })</label>
+                <div class="col-sm-10">
+                    <input type="hidden" class="form-control" name="@nameof(Model.BirthDate)"
+                           value="@Model.BirthDate" />
+                    <input type="text" class="form-control date-picker" name="_birthdate"
+                           value="@(Model.BirthDate != DateTime.MinValue ? Model.BirthDate.ToString("dd/MM/yyyy") : string.Empty)" value="@(Model.BirthDate != DateTime.MinValue ? Model.BirthDate.ToString("yyyy-MM-dd") : string.Empty)" />
+                    @Html.ValidationMessage("InvalidDate", new { @style = "color: red" })
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Địa chỉ:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="@nameof(Model.Address)" value="@Model.Address" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Điện thoại:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="@nameof(Model.Phone)" value="@Model.Phone" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Email: @Html.ValidationMessage("InvalidEmail", new { @style = "color: red" })</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" name="@nameof(Model.Email)" value="@Model.Email" />
+                    @Html.ValidationMessage(nameof(Model.Email), new { @style = "color: red" })
+                </div>
+
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-sm-10">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="@nameof(Model.IsWorking)" @(Model.IsWorking ? "checked" : "") value="true" /> Nhân viên đang làm việc
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Ảnh cá nhân:</label>
+                <div class="col-sm-10">
+                    <input type="file" class="form-control" name="@nameof(Model.Photo)" accept="image/*"
+                           onchange="document.getElementById('Photo').src = window.URL.createObjectURL(this.files[0])" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-sm-10">
+                    <img id="Photo"
+                         src="@(Model.Photo != "" ? Model.Photo : "/images/employees/no-photo.png")"
+                         class="img img-bordered" style="width:200px" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-floppy-o"></i>
+                        Lưu dữ liệu
+                    </button>
+                    <a href="~/Employee" class="btn btn-default">
+                        Quay lại
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.sidebar-menu').tree();
+        $('.date-picker').datepicker({
+            autoclose: true,
+            format: "dd/mm/yyyy"
+        });
+        $('.daterange-picker').daterangepicker({
+            locale: {
+                format: 'DD/MM/YYYY'
+            }
+        });
+        $('.select2').select2();
+    })
+
+    console.log(window.innerHeight + " " + window.innerWidth);
+</script>

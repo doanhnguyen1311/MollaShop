@@ -1,0 +1,204 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\doanh\\Desktop\\LapTrinhUngDungWeb\\SV21T1080007\\SV21T1080007\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6572B187-42D4-4D37-A744-FB3E9FDEA320}|SV21T1080007.Shop\\SV21T1080007.Shop.csproj|c:\\users\\doanh\\desktop\\laptrinhungdungweb\\sv21t1080007\\sv21t1080007\\sv21t1080007.shop\\controllers\\checkoutcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6572B187-42D4-4D37-A744-FB3E9FDEA320}|SV21T1080007.Shop\\SV21T1080007.Shop.csproj|solutionrelative:sv21t1080007.shop\\controllers\\checkoutcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6572B187-42D4-4D37-A744-FB3E9FDEA320}|SV21T1080007.Shop\\SV21T1080007.Shop.csproj|c:\\users\\doanh\\desktop\\laptrinhungdungweb\\sv21t1080007\\sv21t1080007\\sv21t1080007.shop\\views\\checkout\\search.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6572B187-42D4-4D37-A744-FB3E9FDEA320}|SV21T1080007.Shop\\SV21T1080007.Shop.csproj|solutionrelative:sv21t1080007.shop\\views\\checkout\\search.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07549FD1-6363-428C-924C-13889B8602B6}|SV21T1080007\\SV21T1080007.Web.csproj|c:\\users\\doanh\\desktop\\laptrinhungdungweb\\sv21t1080007\\sv21t1080007\\sv21t1080007\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07549FD1-6363-428C-924C-13889B8602B6}|SV21T1080007\\SV21T1080007.Web.csproj|solutionrelative:sv21t1080007\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{09AAAA8A-D046-41D0-A121-1341D3D88EE4}|SV21T1080007.BussinessLayers\\SV21T1080007.BusinessLayers.csproj|c:\\users\\doanh\\desktop\\laptrinhungdungweb\\sv21t1080007\\sv21t1080007\\sv21t1080007.bussinesslayers\\userdataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09AAAA8A-D046-41D0-A121-1341D3D88EE4}|SV21T1080007.BussinessLayers\\SV21T1080007.BusinessLayers.csproj|solutionrelative:sv21t1080007.bussinesslayers\\userdataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2FE23CE-CB2C-4E69-A19B-2C62CFF7315E}|SV21T1080007.DataLayers\\SV21T1080007.DataLayers.csproj|c:\\users\\doanh\\desktop\\laptrinhungdungweb\\sv21t1080007\\sv21t1080007\\sv21t1080007.datalayers\\iuserdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2FE23CE-CB2C-4E69-A19B-2C62CFF7315E}|SV21T1080007.DataLayers\\SV21T1080007.DataLayers.csproj|solutionrelative:sv21t1080007.datalayers\\iuserdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2FE23CE-CB2C-4E69-A19B-2C62CFF7315E}|SV21T1080007.DataLayers\\SV21T1080007.DataLayers.csproj|c:\\users\\doanh\\desktop\\laptrinhungdungweb\\sv21t1080007\\sv21t1080007\\sv21t1080007.datalayers\\sqlserver\\userdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2FE23CE-CB2C-4E69-A19B-2C62CFF7315E}|SV21T1080007.DataLayers\\SV21T1080007.DataLayers.csproj|solutionrelative:sv21t1080007.datalayers\\sqlserver\\userdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6572B187-42D4-4D37-A744-FB3E9FDEA320}|SV21T1080007.Shop\\SV21T1080007.Shop.csproj|c:\\users\\doanh\\desktop\\laptrinhungdungweb\\sv21t1080007\\sv21t1080007\\sv21t1080007.shop\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6572B187-42D4-4D37-A744-FB3E9FDEA320}|SV21T1080007.Shop\\SV21T1080007.Shop.csproj|solutionrelative:sv21t1080007.shop\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6572B187-42D4-4D37-A744-FB3E9FDEA320}|SV21T1080007.Shop\\SV21T1080007.Shop.csproj|c:\\users\\doanh\\desktop\\laptrinhungdungweb\\sv21t1080007\\sv21t1080007\\sv21t1080007.shop\\views\\checkout\\listorder.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6572B187-42D4-4D37-A744-FB3E9FDEA320}|SV21T1080007.Shop\\SV21T1080007.Shop.csproj|solutionrelative:sv21t1080007.shop\\views\\checkout\\listorder.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6572B187-42D4-4D37-A744-FB3E9FDEA320}|SV21T1080007.Shop\\SV21T1080007.Shop.csproj|c:\\users\\doanh\\desktop\\laptrinhungdungweb\\sv21t1080007\\sv21t1080007\\sv21t1080007.shop\\views\\product\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6572B187-42D4-4D37-A744-FB3E9FDEA320}|SV21T1080007.Shop\\SV21T1080007.Shop.csproj|solutionrelative:sv21t1080007.shop\\views\\product\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07549FD1-6363-428C-924C-13889B8602B6}|SV21T1080007\\SV21T1080007.Web.csproj|c:\\users\\doanh\\desktop\\laptrinhungdungweb\\sv21t1080007\\sv21t1080007\\sv21t1080007\\views\\shared\\_header.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{07549FD1-6363-428C-924C-13889B8602B6}|SV21T1080007\\SV21T1080007.Web.csproj|solutionrelative:sv21t1080007\\views\\shared\\_header.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IUserDAL.cs",
+              "DocumentMoniker": "C:\\Users\\doanh\\Desktop\\LapTrinhUngDungWeb\\SV21T1080007\\SV21T1080007\\SV21T1080007.DataLayers\\IUserDAL.cs",
+              "RelativeDocumentMoniker": "SV21T1080007.DataLayers\\IUserDAL.cs",
+              "ToolTip": "C:\\Users\\doanh\\Desktop\\LapTrinhUngDungWeb\\SV21T1080007\\SV21T1080007\\SV21T1080007.DataLayers\\IUserDAL.cs",
+              "RelativeToolTip": "SV21T1080007.DataLayers\\IUserDAL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwBQAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-07T11:23:16.715Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UserDAL.cs",
+              "DocumentMoniker": "C:\\Users\\doanh\\Desktop\\LapTrinhUngDungWeb\\SV21T1080007\\SV21T1080007\\SV21T1080007.DataLayers\\SQLServer\\UserDAL.cs",
+              "RelativeDocumentMoniker": "SV21T1080007.DataLayers\\SQLServer\\UserDAL.cs",
+              "ToolTip": "C:\\Users\\doanh\\Desktop\\LapTrinhUngDungWeb\\SV21T1080007\\SV21T1080007\\SV21T1080007.DataLayers\\SQLServer\\UserDAL.cs",
+              "RelativeToolTip": "SV21T1080007.DataLayers\\SQLServer\\UserDAL.cs",
+              "ViewState": "AgIAAH0AAAAAAAAAAAAAwJgAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-07T11:17:40.615Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserDataService.cs",
+              "DocumentMoniker": "C:\\Users\\doanh\\Desktop\\LapTrinhUngDungWeb\\SV21T1080007\\SV21T1080007\\SV21T1080007.BussinessLayers\\UserDataService.cs",
+              "RelativeDocumentMoniker": "SV21T1080007.BussinessLayers\\UserDataService.cs",
+              "ToolTip": "C:\\Users\\doanh\\Desktop\\LapTrinhUngDungWeb\\SV21T1080007\\SV21T1080007\\SV21T1080007.BussinessLayers\\UserDataService.cs",
+              "RelativeToolTip": "SV21T1080007.BussinessLayers\\UserDataService.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAcwDUAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-07T11:17:30.245Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CheckoutController.cs",
+              "DocumentMoniker": "C:\\Users\\doanh\\Desktop\\LapTrinhUngDungWeb\\SV21T1080007\\SV21T1080007\\SV21T1080007.Shop\\Controllers\\CheckoutController.cs",
+              "RelativeDocumentMoniker": "SV21T1080007.Shop\\Controllers\\CheckoutController.cs",
+              "ToolTip": "C:\\Users\\doanh\\Desktop\\LapTrinhUngDungWeb\\SV21T1080007\\SV21T1080007\\SV21T1080007.Shop\\Controllers\\CheckoutController.cs",
+              "RelativeToolTip": "SV21T1080007.Shop\\Controllers\\CheckoutController.cs",
+              "ViewState": "AgIAAEgAAAAAAAAAAAASwFYAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-07T11:16:38.568Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "C:\\Users\\doanh\\Desktop\\LapTrinhUngDungWeb\\SV21T1080007\\SV21T1080007\\SV21T1080007\\Controllers\\OrderController.cs",
+              "RelativeDocumentMoniker": "SV21T1080007\\Controllers\\OrderController.cs",
+              "ToolTip": "C:\\Users\\doanh\\Desktop\\LapTrinhUngDungWeb\\SV21T1080007\\SV21T1080007\\SV21T1080007\\Controllers\\OrderController.cs",
+              "RelativeToolTip": "SV21T1080007\\Controllers\\OrderController.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-07T11:16:33.738Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\doanh\\Desktop\\LapTrinhUngDungWeb\\SV21T1080007\\SV21T1080007\\SV21T1080007.Shop\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "SV21T1080007.Shop\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\doanh\\Desktop\\LapTrinhUngDungWeb\\SV21T1080007\\SV21T1080007\\SV21T1080007.Shop\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "SV21T1080007.Shop\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-07T10:38:23.083Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Search.cshtml",
+              "DocumentMoniker": "C:\\Users\\doanh\\Desktop\\LapTrinhUngDungWeb\\SV21T1080007\\SV21T1080007\\SV21T1080007.Shop\\Views\\Checkout\\Search.cshtml",
+              "RelativeDocumentMoniker": "SV21T1080007.Shop\\Views\\Checkout\\Search.cshtml",
+              "ToolTip": "C:\\Users\\doanh\\Desktop\\LapTrinhUngDungWeb\\SV21T1080007\\SV21T1080007\\SV21T1080007.Shop\\Views\\Checkout\\Search.cshtml",
+              "RelativeToolTip": "SV21T1080007.Shop\\Views\\Checkout\\Search.cshtml",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAB0AAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-07T08:26:30.109Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ListOrder.cshtml",
+              "DocumentMoniker": "C:\\Users\\doanh\\Desktop\\LapTrinhUngDungWeb\\SV21T1080007\\SV21T1080007\\SV21T1080007.Shop\\Views\\Checkout\\ListOrder.cshtml",
+              "RelativeDocumentMoniker": "SV21T1080007.Shop\\Views\\Checkout\\ListOrder.cshtml",
+              "ToolTip": "C:\\Users\\doanh\\Desktop\\LapTrinhUngDungWeb\\SV21T1080007\\SV21T1080007\\SV21T1080007.Shop\\Views\\Checkout\\ListOrder.cshtml",
+              "RelativeToolTip": "SV21T1080007.Shop\\Views\\Checkout\\ListOrder.cshtml",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABcAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-07T08:26:20.18Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\doanh\\Desktop\\LapTrinhUngDungWeb\\SV21T1080007\\SV21T1080007\\SV21T1080007.Shop\\Views\\Product\\Details.cshtml",
+              "RelativeDocumentMoniker": "SV21T1080007.Shop\\Views\\Product\\Details.cshtml",
+              "ToolTip": "C:\\Users\\doanh\\Desktop\\LapTrinhUngDungWeb\\SV21T1080007\\SV21T1080007\\SV21T1080007.Shop\\Views\\Product\\Details.cshtml",
+              "RelativeToolTip": "SV21T1080007.Shop\\Views\\Product\\Details.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-07T08:26:09.35Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "_Header.cshtml",
+              "DocumentMoniker": "C:\\Users\\doanh\\Desktop\\LapTrinhUngDungWeb\\SV21T1080007\\SV21T1080007\\SV21T1080007\\Views\\Shared\\_Header.cshtml",
+              "RelativeDocumentMoniker": "SV21T1080007\\Views\\Shared\\_Header.cshtml",
+              "ToolTip": "C:\\Users\\doanh\\Desktop\\LapTrinhUngDungWeb\\SV21T1080007\\SV21T1080007\\SV21T1080007\\Views\\Shared\\_Header.cshtml",
+              "RelativeToolTip": "SV21T1080007\\Views\\Shared\\_Header.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAABXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-07T08:09:50.681Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

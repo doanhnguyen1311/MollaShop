@@ -1,0 +1,57 @@
+﻿@using SV21T1080007.Web
+<header class="main-header">
+    <a href="~/" class="logo">
+        <span class="logo-mini"><b>NVD</b>LT</span>
+        <span class="logo-lg"><b>NVD</b>LTE</span>
+    </a>
+    <nav class="navbar navbar-static-top">
+        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </a>
+
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+                @{
+                    var userData = User.GetUserData();
+                    if(userData != null)
+                    {
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="@(string.IsNullOrWhiteSpace(userData.Photo) ? "/images/employees/no-photo.png" : userData.Photo)" class="user-image" alt="User Image">
+                                <span class="hidden-xs">@userData.DisplayName</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src="@(string.IsNullOrWhiteSpace(userData.Photo) ? "/images/employees/no-photo.png" : userData.Photo)" class="img-circle" alt="User Image">
+
+                                    <p>
+                                        @userData.DisplayName
+                                    </p>
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="~/Account/ChangePassword" class="btn btn-default btn-flat">Đổi mật khẩu</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="~/Account/Logout" class="btn btn-default btn-flat">Đăng xuất</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- Control Sidebar Toggle Button -->
+                        <li>
+                            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                        </li>
+                    }
+                }
+                
+            </ul>
+        </div>
+    </nav>
+</header>

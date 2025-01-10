@@ -1,0 +1,9 @@
+C:\Users\doanh\Desktop\LapTrinhUngDungWeb\SV21T1080007\SV21T1080007\SV21T1080007.Customer\obj\Debug\net8.0\SV21T1080007.Customer.csproj.AssemblyReference.cache
+C:\Users\doanh\Desktop\LapTrinhUngDungWeb\SV21T1080007\SV21T1080007\SV21T1080007.Customer\obj\Debug\net8.0\SV21T1080007.Customer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\doanh\Desktop\LapTrinhUngDungWeb\SV21T1080007\SV21T1080007\SV21T1080007.Customer\obj\Debug\net8.0\SV21T1080007.Customer.AssemblyInfoInputs.cache
+C:\Users\doanh\Desktop\LapTrinhUngDungWeb\SV21T1080007\SV21T1080007\SV21T1080007.Customer\obj\Debug\net8.0\SV21T1080007.Customer.AssemblyInfo.cs
+C:\Users\doanh\Desktop\LapTrinhUngDungWeb\SV21T1080007\SV21T1080007\SV21T1080007.Customer\obj\Debug\net8.0\SV21T1080007.Customer.csproj.CoreCompileInputs.cache
+C:\Users\doanh\Desktop\LapTrinhUngDungWeb\SV21T1080007\SV21T1080007\SV21T1080007.Customer\obj\Debug\net8.0\SV21T1080007.Customer.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\doanh\Desktop\LapTrinhUngDungWeb\SV21T1080007\SV21T1080007\SV21T1080007.Customer\obj\Debug\net8.0\SV21T1080007.Customer.RazorAssemblyInfo.cache
+C:\Users\doanh\Desktop\LapTrinhUngDungWeb\SV21T1080007\SV21T1080007\SV21T1080007.Customer\obj\Debug\net8.0\SV21T1080007.Customer.RazorAssemblyInfo.cs
+C:\Users\doanh\Desktop\LapTrinhUngDungWeb\SV21T1080007\SV21T1080007\SV21T1080007.Customer\obj\Debug\net8.0\SV21T1080007.Customer.sourcelink.json

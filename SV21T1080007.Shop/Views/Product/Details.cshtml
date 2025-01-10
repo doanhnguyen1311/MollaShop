@@ -1,0 +1,274 @@
+﻿@model Product
+@{
+    ViewBag.Title = "Chi tiết sản phẩm";
+}
+
+<nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
+    <div class="container d-flex align-items-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="~/Home">Trang chủ</a></li>
+            <li class="breadcrumb-item"><a href="~/Product">Products</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Chi tiết sản phẩm</li>
+        </ol>
+
+        <nav class="product-pager ml-auto" aria-label="Product">
+            <a class="product-pager-link product-pager-prev" href="#" aria-label="Previous" tabindex="-1">
+                <i class="icon-angle-left"></i>
+                <span>Trước</span>
+            </a>
+
+            <a class="product-pager-link product-pager-next" href="#" aria-label="Next" tabindex="-1">
+                <span>Tiếp</span>
+                <i class="icon-angle-right"></i>
+            </a>
+        </nav><!-- End .pager-nav -->
+    </div><!-- End .container -->
+</nav><!-- End .breadcrumb-nav -->
+
+<div class="page-content">
+    <div class="container">
+        <div class="product-details-top mb-2">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="product-gallery product-gallery-vertical">
+                        <div class="row">
+                            <figure class="product-main-image">
+                                <img id="product-zoom" src="@(string.IsNullOrWhiteSpace(Model.Photo) && ProductDataService.ListPhotos(Model.ProductID).Any() ? ProductDataService.ListPhotos(Model.ProductID).First().Photo : (string.IsNullOrWhiteSpace(Model.Photo) ? "/images/employees/no-photo.png" : $"{Model.Photo}"))" data-zoom-image="@(string.IsNullOrWhiteSpace(Model.Photo) && ProductDataService.ListPhotos(Model.ProductID).Any() ? ProductDataService.ListPhotos(Model.ProductID).First().Photo : (string.IsNullOrWhiteSpace(Model.Photo) ? "/images/employees/no-photo.png" : Model.Photo))" alt="product image">
+
+                                <a href="#" id="btn-product-gallery" class="btn-product-gallery">
+                                    <i class="icon-arrows"></i>
+                                </a>
+                            </figure><!-- End .product-main-image -->
+
+                            <div id="product-zoom-gallery" class="product-image-gallery">
+
+                                @foreach (var item in ProductDataService.ListPhotos(Model.ProductID))
+                                {
+                                    if (item != null)
+                                    {
+                                        <a class="product-gallery-item" href="#" data-image="@item.Photo" data-zoom-image="@item.Photo">
+                                            <img src="@item.Photo" alt="product back">
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a class="product-gallery-item" href="#" data-image="~/images/employees/no-photo.png" data-zoom-image="~/images/employees/no-photo.png">
+                                            <img src="~/images/employees/no-photo.png" alt="product back">
+                                        </a>
+                                    }
+                                }
+                            </div><!-- End .product-image-gallery -->
+                        </div><!-- End .row -->
+
+                    </div><!-- End .product-gallery -->
+                </div><!-- End .col-md-6 -->
+
+                <div class="col-md-6">
+                    <div class="product-details product-details-centered">
+                        <h1 class="product-title">@Model.ProductName</h1><!-- End .product-title -->
+
+                        <div class="ratings-container">
+                            <div class="ratings">
+                                <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
+                            </div><!-- End .ratings -->
+                            <a class="ratings-text" href="#product-review-link" id="review-link">( 2 Reviews )</a>
+                        </div><!-- End .rating-container -->
+
+                        <div class="product-price">
+                            @Model.Price.ToString("C0", new System.Globalization.CultureInfo("vi-VN"))
+                        </div><!-- End .product-price -->
+
+                        <div class="product-content">
+                            <p>@Model.ProductDescription</p>
+                        </div><!-- End .product-content -->
+
+                        <div class="product-details-action">
+                            <div class="details-action-col">
+                                <div class="product-details-quantity">
+                                    <input type="number" id="qty" class="form-control" value="1" min="1" max="50" step="1" data-decimals="0" required>
+                                </div><!-- End .product-details-quantity -->
+
+                                <a href="#" data-productid="@Model.ProductID" class="btn-product btn-cart"><span>Thêm vào giỏ hàng</span></a>
+                            </div><!-- End .details-action-col -->
+                        </div><!-- End .product-details-action -->
+
+                        <div class="product-details-footer">
+
+                            <div class="social-icons social-icons-sm">
+                                <span class="social-label">Share:</span>
+                                <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
+                                <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
+                                <a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
+                                <a href="#" class="social-icon" title="Pinterest" target="_blank"><i class="icon-pinterest"></i></a>
+                            </div>
+                        </div><!-- End .product-details-footer -->
+                    </div><!-- End .product-details -->
+                </div><!-- End .col-md-6 -->
+            </div><!-- End .row -->
+        </div><!-- End .product-details-top -->
+        <table class="table table-bordered">
+            <thead class="table">
+                <tr style="text-align: center;">
+                    <th>Tên Thuộc Tính</th>
+                    <th>Giá Trị Thuộc Tính</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in ProductDataService.ListAttributes(Model.ProductID))
+                {
+                    <tr style="text-align: center;">
+                        <td>@item.AttributeName</td>
+                        <td>@item.AttributeValue</td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+        <div class="product-details-tab">
+            <ul class="nav nav-pills justify-content-center" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="product-desc-link" data-toggle="tab" href="#product-desc-tab" role="tab" aria-controls="product-desc-tab" aria-selected="true">Mô tả</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="product-info-link" data-toggle="tab" href="#product-info-tab" role="tab" aria-controls="product-info-tab" aria-selected="false">Thông tin bổ sung</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="product-shipping-link" data-toggle="tab" href="#product-shipping-tab" role="tab" aria-controls="product-shipping-tab" aria-selected="false">Vận chuyển & Trả hàng</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="product-review-link" data-toggle="tab" href="#product-review-tab" role="tab" aria-controls="product-review-tab" aria-selected="false">Đánh giá (2)</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="product-desc-tab" role="tabpanel" aria-labelledby="product-desc-link">
+                    <div class="product-desc-content">
+                        <h3>Thông tin sản phẩm</h3>
+                        <p>Chúng tôi luôn nỗ lực mang đến cho bạn những sản phẩm chất lượng nhất, giúp bạn cảm thấy hài lòng và tin tưởng. Mỗi sản phẩm đều được chọn lựa kỹ lưỡng, đảm bảo tính năng vượt trội và đáp ứng đầy đủ nhu cầu của người sử dụng. Bạn có thể yên tâm về độ bền và hiệu quả sử dụng lâu dài của sản phẩm.</p>
+
+                        <ul>
+                            <li>Chúng tôi cam kết cung cấp các sản phẩm có chất lượng tốt nhất, được kiểm tra kỹ càng trước khi đến tay người tiêu dùng.</li>
+                            <li>Mỗi sản phẩm đều được thiết kế tỉ mỉ, đáp ứng đầy đủ tiêu chuẩn và mang đến sự hài lòng cho khách hàng.</li>
+                            <li>Chúng tôi không ngừng nghiên cứu và phát triển để cải thiện từng sản phẩm, mang đến những giải pháp mới và sáng tạo cho bạn.</li>
+                        </ul>
+
+                        <p>Chúng tôi luôn sẵn sàng hỗ trợ bạn trong suốt quá trình sử dụng sản phẩm. Nếu có bất kỳ vấn đề gì, đừng ngần ngại liên hệ với chúng tôi để được giải quyết nhanh chóng và hiệu quả. Chất lượng dịch vụ luôn là ưu tiên hàng đầu của chúng tôi.</p>
+
+                    </div><!-- End .product-desc-content -->
+                </div><!-- .End .tab-pane -->
+                <div class="tab-pane fade" id="product-info-tab" role="tabpanel" aria-labelledby="product-info-link">
+                    <div class="product-desc-content">
+                        <h3>Thông tin</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci.</p>
+
+                        <h3>Vải & chăm sóc</h3>
+                        <ul>
+                            <li>Vải giả da lộn</li>
+                            <li>Vòng kim loại màu vàng</li>
+                            <li>Thương hiệu RI</li>
+                            <li>Chất liệu nội thất trang trí họa tiết da rắn</li>
+                            <li>Dây đeo chéo có thể điều chỉnh</li>
+                            <li>Chiều cao: 31cm; Chiều rộng: 32cm; Chiều sâu: 12cm; Khoảng cách tay cầm: 61cm</li>
+                        </ul>
+
+                        <h3>Kích cỡ</h3>
+                        <p>Một kích thước</p>
+                    </div><!-- End .product-desc-content -->
+                </div><!-- .End .tab-pane -->
+                <div class="tab-pane fade" id="product-shipping-tab" role="tabpanel" aria-labelledby="product-shipping-link">
+                    <div class="product-desc-content">
+                        <h3>Vận chuyển & Trả hàng</h3>
+                        <p>
+                            Chúng tôi giao hàng trong phạm vi cả nước. Để biết chi tiết về các phương thức giao hàng, vui lòng tham khảo <a href="#">Thông tin giao hàng</a><br>
+                            Chúng tôi hy vọng bạn sẽ hài lòng với mọi sản phẩm đã mua, nhưng nếu bạn cần trả lại sản phẩm, bạn có thể làm điều đó trong vòng một tháng kể từ ngày nhận hàng. Để biết chi tiết về quy trình trả hàng, vui lòng tham khảo <a href="#">Thông tin trả hàng</a>
+                        </p>
+                    </div><!-- End .product-desc-content -->
+                </div><!-- .End .tab-pane -->
+                <div class="tab-pane fade" id="product-review-tab" role="tabpanel" aria-labelledby="product-review-link">
+                    <div class="reviews">
+                        <h3>Đánh giá (2)</h3>
+                        <div class="review">
+                            <div class="row no-gutters">
+                                <div class="col-auto">
+                                    <h4><a href="#">Samanta J.</a></h4>
+                                    <div class="ratings-container">
+                                        <div class="ratings">
+                                            <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
+                                        </div><!-- End .ratings -->
+                                    </div><!-- End .rating-container -->
+                                    <span class="review-date">6 ngày trước</span>
+                                </div><!-- End .col -->
+                                <div class="col">
+                                    <h4>Rất tốt, kích thước hoàn hảo</h4>
+
+                                    <div class="review-content">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!</p>
+                                    </div><!-- End .review-content -->
+
+                                    <div class="review-action">
+                                        <a href="#"><i class="icon-thumbs-up"></i> Hữu ích (2)</a>
+                                        <a href="#"><i class="icon-thumbs-down"></i> Không hữu ích (0)</a>
+                                    </div><!-- End .review-action -->
+                                </div><!-- End .col-auto -->
+                            </div><!-- End .row -->
+                        </div><!-- End .review -->
+
+                        <div class="review">
+                            <div class="row no-gutters">
+                                <div class="col-auto">
+                                    <h4><a href="#">John Doe</a></h4>
+                                    <div class="ratings-container">
+                                        <div class="ratings">
+                                            <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
+                                        </div><!-- End .ratings -->
+                                    </div><!-- End .rating-container -->
+                                    <span class="review-date">5 ngày trước</span>
+                                </div><!-- End .col -->
+                                <div class="col">
+                                    <h4>Rất tốt</h4>
+
+                                    <div class="review-content">
+                                        <p>Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum blanditiis laudantium iste amet. Cum non voluptate eos enim, ab cumque nam, modi, quas iure illum repellendus, blanditiis perspiciatis beatae!</p>
+                                    </div><!-- End .review-content -->
+
+                                    <div class="review-action">
+                                        <a href="#"><i class="icon-thumbs-up"></i> Hữu ích (0)</a>
+                                        <a href="#"><i class="icon-thumbs-down"></i> Không hữu ích (0)</a>
+                                    </div><!-- End .review-action -->
+                                </div><!-- End .col-auto -->
+                            </div><!-- End .row -->
+                        </div><!-- End .review -->
+                    </div><!-- End .reviews -->
+                </div><!-- .End .tab-pane -->
+            </div><!-- End .tab-content -->
+        </div><!-- End .product-details-tab -->
+
+    </div><!-- End .container -->
+</div><!-- End .page-content -->
+
+
+<script>
+    $(document).ready(function () {
+        function AddToCart(productID, Quantity) {
+            $.ajax({
+                url: '/Cart/AddToCart',
+                method: 'GET',
+                data: { productid: productID, quantity: Quantity },
+                success: function (res) {
+                    toastr.success('Thêm sản phẩm vào giỏ hàng thành công!');
+                    $('.dropdown-menu-right').html(res);
+                    let count = $('#count-cart').val();
+                    $('.cart-count').text(count);
+                },
+                error: function (err) {
+                    console.log('err: ' + err);
+                }
+            });
+        }
+
+        $(document).on('click', '.btn-cart', function () {
+            let id = $(this).data('productid');
+            let quantity = $('#qty').val();
+            AddToCart(id, quantity);
+        });
+    });
+</script>

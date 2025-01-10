@@ -1,0 +1,145 @@
+﻿@model ProductSearchResult
+@{
+    Layout = null;
+}
+
+<style>
+    .pagination {
+        display: flex;
+        flex-wrap: wrap; /* Đảm bảo các trang sẽ xuống hàng khi không đủ chỗ */
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .page-item {
+        margin: 2px; /* Khoảng cách giữa các trang */
+    }
+
+</style>
+
+<div class="toolbox">
+    <div class="toolbox-left">
+        <div class="toolbox-info">
+            <span>Có @Model.RowCount sản phẩm trong tổng số @Model.PageCount trang</span>
+        </div><!-- End .toolbox-info -->
+    </div><!-- End .toolbox-left -->
+
+    <div class="toolbox-right">
+        <div class="toolbox-sort">
+            <label for="sortby">Sort by:</label>
+            <div class="select-custom">
+                <select name="sortby" id="sortby" class="form-control">
+                    <option value="popularity" selected="selected">Most Popular</option>
+                    <option value="rating">Most Rated</option>
+                    <option value="date">Date</option>
+                </select>
+            </div>
+        </div><!-- End .toolbox-sort -->
+        <div class="toolbox-layout">
+            <a href="category-list.html" class="btn-layout">
+                <svg width="16" height="10">
+                    <rect x="0" y="0" width="4" height="4" />
+                    <rect x="6" y="0" width="10" height="4" />
+                    <rect x="0" y="6" width="4" height="4" />
+                    <rect x="6" y="6" width="10" height="4" />
+                </svg>
+            </a>
+
+            <a href="category-2cols.html" class="btn-layout">
+                <svg width="10" height="10">
+                    <rect x="0" y="0" width="4" height="4" />
+                    <rect x="6" y="0" width="4" height="4" />
+                    <rect x="0" y="6" width="4" height="4" />
+                    <rect x="6" y="6" width="4" height="4" />
+                </svg>
+            </a>
+
+            <a href="category.html" class="btn-layout active">
+                <svg width="16" height="10">
+                    <rect x="0" y="0" width="4" height="4" />
+                    <rect x="6" y="0" width="4" height="4" />
+                    <rect x="12" y="0" width="4" height="4" />
+                    <rect x="0" y="6" width="4" height="4" />
+                    <rect x="6" y="6" width="4" height="4" />
+                    <rect x="12" y="6" width="4" height="4" />
+                </svg>
+            </a>
+
+            <a href="category-4cols.html" class="btn-layout">
+                <svg width="22" height="10">
+                    <rect x="0" y="0" width="4" height="4" />
+                    <rect x="6" y="0" width="4" height="4" />
+                    <rect x="12" y="0" width="4" height="4" />
+                    <rect x="18" y="0" width="4" height="4" />
+                    <rect x="0" y="6" width="4" height="4" />
+                    <rect x="6" y="6" width="4" height="4" />
+                    <rect x="12" y="6" width="4" height="4" />
+                    <rect x="18" y="6" width="4" height="4" />
+                </svg>
+            </a>
+        </div><!-- End .toolbox-layout -->
+    </div><!-- End .toolbox-right -->
+</div><!-- End .toolbox -->
+
+<div class="products mb-3">
+    <div class="row justify-content-center">
+        @foreach (var item in Model.Data)
+        {
+            <div class="col-6 col-md-4 col-lg-4">
+                <div class="product product-7 text-center">
+                <figure class="product-media">
+                    <a href="~/Product/Details/@item.ProductID">
+                            <img style="height: 300px;" src="@(string.IsNullOrWhiteSpace(item.Photo) ? "images/employees/no-photo.png" : item.Photo)" alt="Product image" class="product-image">
+                    </a>
+
+                    <div class="product-action-vertical">
+                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>Thêm vào yêu thích</span></a>
+                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Xem nhanh</span></a>
+                        <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
+                    </div><!-- End .product-action-vertical -->
+
+                    <div class="product-action">
+                        <a href="javascript:;" data-productid="@item.ProductID" class="btn-product btn-cart"><span>Thêm vào giỏ</span></a>
+                    </div><!-- End .product-action -->
+                </figure><!-- End .product-media -->
+
+                <div class="product-body">
+                    <div class="product-cat">
+                        <a href="#">Bags</a>
+                    </div><!-- End .product-cat -->
+                    <h3 class="product-title"><a href="~/Details?productid=@item.ProductID">@item.ProductName</a></h3><!-- End .product-title -->
+                    <div class="product-price">
+                            @item.Price.ToString("C0", new System.Globalization.CultureInfo("vi-VN"))
+                    </div><!-- End .product-price -->
+                    <div class="ratings-container">
+                        <div class="ratings">
+                            <div class="ratings-val" style="width: 0%;"></div><!-- End .ratings-val -->
+                        </div><!-- End .ratings -->
+                        <span class="ratings-text">( 0 Reviews )</span>
+                    </div><!-- End .rating-container -->
+                </div><!-- End .product-body -->
+            </div><!-- End .product -->
+        </div><!-- End .col-sm-6 col-lg-4 -->
+        }
+    </div><!-- End .row -->
+</div><!-- End .products -->
+
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+            <a class="page-link page-link-prev" href="#" aria-label="Previous" tabindex="-1" aria-disabled="true">
+                <span aria-hidden="true"><i class="icon-long-arrow-left"></i></span>Trước
+            </a>
+        </li>
+        @for (int i = 1; i <= Model.PageCount; i++)
+        {
+            <li class="page-item"><a class="page-link" data-page="@i" href="javascript:;">@i</a></li>
+        }
+        <li class="page-item">
+            <a class="page-link page-link-next" href="#" aria-label="Next">
+                Sau <span aria-hidden="true"><i class="icon-long-arrow-right"></i></span>
+            </a>
+        </li>
+    </ul>
+</nav>

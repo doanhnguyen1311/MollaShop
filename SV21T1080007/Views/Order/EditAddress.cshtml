@@ -1,0 +1,93 @@
+﻿@model ﻿Order
+@{
+    Layout = null;
+}
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        @if (Model != null)
+        {
+            <form id="formEditAddress" action="~/Order/UpdateAddress" method="post" class="form-horizontal">
+                <input type="hidden" name="@nameof(Model.OrderID)" value="@Model.OrderID" />
+
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Cập nhật địa chỉ giao hàng</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">Địa chỉ:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="@nameof(Model.DeliveryAddress)" value="@Model.DeliveryAddress" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">Tỉnh thành:</label>
+                        <div class="col-sm-9">
+                            <select class="form-control select2" name="deliveryProvince">
+                                <option value="0">-- Chọn tỉnh/thành --</option>
+                                @foreach (var item in SV21T1080007.BusinessLayers.CommonDataService.ListOfProvince())
+                                {
+                                    <option value="@item.ProvinceName">@item.ProvinceName</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-sm-9">
+                            <span id="errorEditAdressMessage" style="color: #f00"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-floppy-o"></i> Cập nhật
+                    </button>
+                    <button type="button" class="btn btn-default">
+                        Bỏ qua
+                    </button>
+                </div>
+            </form>
+        }
+        else
+        {
+            <div class="modal-header bg-warning">
+                Thông báo
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="text-warning text-center">Yêu cầu không hợp lệ!</p>
+            </div>
+        }
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#formEditAddress").submit(function (e) {
+            e.preventDefault();
+
+            var url = $(this).prop("action");
+            var method = $(this).prop("method");
+
+            var postData = $(this).serializeArray();
+
+            $.ajax({
+                url: url,
+                type: method,
+                data: postData,
+                success: function (response) {
+                    if (response.success) {
+                        window.location.href = response.redirectUrl;
+                    } else {
+                        // Hiển thị thông báo lỗi nếu có lỗi
+                        $("#errorEditAdressMessage").html(response.message);
+                    }
+                },
+                error: function () {
+                    alert("Yêu cầu của bạn không hợp lệ!");
+                }
+            });
+        });
+    });</script>

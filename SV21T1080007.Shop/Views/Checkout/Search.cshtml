@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Order>
+
+@{
+    Layout = null;
+}
+<table class="table table-cart table-mobile">
+
+    <thead class="thead-dark text-center">
+        <tr>
+            <th>Mã Đơn hàng</th>
+            <th>Địa chỉ nhận hàng</th>
+            <th>NV duyệt đơn</th>
+            <th>TG Duyệt</th>
+            <th>TG giao hàng</th>
+            <th>TG thành công / Hủy đơn</th>
+            <th>Trạng thái</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody class="cart-tbody">
+        @if (Model.Count() > 0)
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <!-- Mã đơn hàng -->
+                    <td class="text-center">@item.OrderID</td>
+                    <!-- Địa chỉ nhận hàng -->
+                    <td>
+                        @(string.IsNullOrWhiteSpace(item.DeliveryAddress) ? "" : $"{item.DeliveryAddress}, ")
+                        @item.DeliveryProvince
+                    </td>
+                    <!-- Nhân viên duyệt đơn -->
+                    <td>
+                        @(item.EmployeeID.HasValue
+                            ? CommonDataService.GetEmployee(item.EmployeeID.Value).FullName
+                            : "Chưa phân công")
+                    </td>
+                    <!-- Thời gian duyệt -->
+                    <td class="text-center">
+                        @if (item.AcceptTime != DateTime.MinValue)
+                        {
+                            @item.AcceptTime?.ToString("dd/MM/yyyy HH:mm")
+                        }
+                    </td>
+                    <!-- Thời gian giao hàng -->
+                    <td class="text-center">
+                        @item.ShippedTime?.ToString("dd/MM/yyyy HH:mm")
+                    </td>
+                    <!-- Thời gian thành công -->
+                    <td class="text-center">
+                        @item.FinishedTime?.ToString("dd/MM/yyyy HH:mm")
+                    </td>
+                    <!-- Trạng thái -->
+                    <td class="text-center">@item.StatusDescription</td>
+                    <!-- Hành động -->
+                    <td class="text-center">
+                        <a class="btn btn-outline-info btn-sm px-2 py-1"
+                           href="/Checkout/OrderDetails/@(item.OrderID)">Xem</a>
+                        <br />
+                        @if (item.Status == Constants.ORDER_INIT || item.Status == Constants.ORDER_ACCEPTED)
+                        {
+                            <a class="btn btn-outline-danger btn-sm px-2 py-1"
+                               href="javascript:void(0);"
+                               onclick="if(confirm('Hủy đơn hàng này chứ?')) { window.location.href='/Checkout/DeleteOrder/' + @(item.OrderID); }">Hủy</a>
+                        }
+                    </td>
+
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="8" class="text-center font-italic text-muted">Không có đơn hàng nào!</td>
+            </tr>
+        }
+    </tbody>
+</table><!-- End .table table-cart -->

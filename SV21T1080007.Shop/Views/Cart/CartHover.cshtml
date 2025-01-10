@@ -1,0 +1,47 @@
+﻿@model IEnumerable<CartItem>
+
+@{
+    Layout = null;
+    decimal totalPrice = 0;
+}
+
+<div class="dropdown-cart-products">
+    @foreach (var item in Model)
+    {
+        <div class="product">
+            <div class="product-cart-details">
+            <h4 class="product-title">
+                <a href="~/Product/Details/@item.ProductID">@item.ProductName</a>
+            </h4>
+
+            <span class="cart-product-info">
+                <span class="cart-product-qty">@item.Quantity</span>
+                    x @item.SalePrice.ToString("C0", new System.Globalization.CultureInfo("vi-VN"))
+            </span>
+        </div><!-- End .product-cart-details -->
+        @{
+            totalPrice += item.TotalPrice;
+        }
+        <figure class="product-image-container">
+            <a href="product.html" class="product-image">
+                <img src="@(string.IsNullOrWhiteSpace(item.Photo) ? "images/employees/no-photo.png" : item.Photo) " alt="product">
+            </a>
+        </figure>
+        <a href="javascript:;" class="btn-remove" data-productid="@item.ProductID" title="Remove Product"><i class="icon-close"></i></a>
+    </div><!-- End .product -->
+    }
+</div><!-- End .cart-product -->
+<input type="hidden" value="@ViewBag.TotalQuantity" id="count-cart" />
+
+<div class="dropdown-cart-total">
+    <span>Tổng</span>
+
+    <span class="cart-total-price">@totalPrice.ToString("C0", new System.Globalization.CultureInfo("vi-VN"))</span>
+</div><!-- End .dropdown-cart-total -->
+
+<div class="dropdown-cart-action">
+    <a href="~/Cart" class="btn btn-primary">Giỏ hàng</a>
+    <a href="~/CheckOut" class="btn btn-outline-primary-2"><span>Thanh toán</span><i class="icon-long-arrow-right"></i></a>
+</div><!-- End .dropdown-cart-total -->
+
+

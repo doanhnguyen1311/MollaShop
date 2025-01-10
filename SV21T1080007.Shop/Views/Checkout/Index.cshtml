@@ -1,0 +1,95 @@
+﻿@{
+    ViewBag.Title = "Thanh toán";
+
+    var data = ApplicationContext.GetSessionData<Customer>("user");
+}
+<div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+    <div class="container">
+        <h1 class="page-title">Checkout<span>Shop</span></h1>
+    </div><!-- End .container -->
+</div><!-- End .page-header -->
+<nav aria-label="breadcrumb" class="breadcrumb-nav">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="~/Home">Trang chủ</a></li>
+            <li class="breadcrumb-item"><a href="~/Cart">Giỏ hàng</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Thanh toán</li>
+        </ol>
+    </div><!-- End .container -->
+</nav><!-- End .breadcrumb-nav -->
+
+<div class="page-content">
+    <div class="checkout">
+        <div class="container">
+            <div class="checkout-discount">
+                @*
+                <form action="#">
+                <input type="text" class="form-control" required id="checkout-discount-input">
+                <label for="checkout-discount-input" class="text-truncate">Have a coupon? <span>Click here to enter your code</span></label>
+                </form> *@
+            </div><!-- End .checkout-discount -->
+            <form action="~/Checkout/AddOrder" method="get">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <h2 class="checkout-title">Thông tin thanh toán</h2><!-- End .checkout-title -->
+
+                        <label>Họ tên khách hàng</label>
+                        <input type="text" class="form-control" value="@data.CustomerName" readonly />
+
+                        <label>Tên hợp đồng</label>
+                        <input value="@data.ContactName" type="text" class="form-control" readonly>
+
+                        <label>Địa chỉ của bạn</label>
+                        <input type="text" value="@(data.Address != null ? $"{data.Address}, " : "")@data.Province" class="form-control" placeholder="" readonly>
+
+                        <label>Số điện thoại </label>
+                        <input type="tel" value="@data.Phone" class="form-control" readonly>
+
+                        <label>Email</label>
+                        <input type="email" value="@data.Email" class="form-control" readonly>
+
+                        <label>Chọn tỉnh thành giao hàng:</label>
+                        <select class="form-control" name="deliveryProvince" required>
+                            <option value="" disabled selected>---Chọn tỉnh thành giao hàng---</option>
+                            @foreach (var item in CommonDataService.ListOfProvince())
+                            {
+                                <option value="@item.ProvinceName">@item.ProvinceName</option>
+                            }
+                        </select>
+
+                        <label>Nhập địa chỉ giao hàng cụ thể:</label>
+                        <input type="text" name="deliveryAddress" class="form-control" required>
+
+                        
+
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="checkout-create-acc">
+                        </div><!-- End .custom-checkbox -->
+                    </div><!-- End .col-lg-9 -->
+                    <aside class="col-lg-3" id="aside">
+
+                    </aside>
+                </div><!-- End .row -->
+            </form>
+        </div><!-- End .container -->
+    </div><!-- End .checkout -->
+</div><!-- End .page-content -->
+
+<script>
+    $(document).ready(function () {
+        function LoadCartCheckout() {
+            $.ajax({
+                url: 'Checkout/Aside',
+                method: 'GET',
+                success: function (res) {
+                    $("#aside").html(res);
+                },
+                error: function (err) {
+                    console.log("Lỗi ở Checkout/Index" + err);
+                }
+            });
+        }
+
+        LoadCartCheckout();
+    });
+</script>

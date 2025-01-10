@@ -1,0 +1,124 @@
+﻿@{
+    ViewBag.Title = "Sản phẩm";
+}
+<style>
+    .product-image {
+        display: block;
+        width: 100%;
+        
+    }
+</style>
+
+<div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+    <div class="container">
+        <h1 class="page-title">Molla <span>Shop</span></h1>
+    </div><!-- End .container -->
+</div><!-- End .page-header -->
+<nav aria-label="breadcrumb" class="breadcrumb-nav mb-2">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Shop</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Grid 3 Columns</li>
+        </ol>
+    </div><!-- End .container -->
+</nav><!-- End .breadcrumb-nav -->
+
+<div class="page-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                
+            </div><!-- End .col-lg-9 -->
+            <aside class="col-lg-3 order-lg-first">
+                <div class="sidebar sidebar-shop">
+                    <div class="widget widget-clean">
+                        <label>Filters:</label>
+                        <a href="#" class="sidebar-filter-clear">Clean All</a>
+                    </div><!-- End .widget widget-clean -->
+
+                    <div class="widget widget-collapsible">
+                        <h3 class="widget-title">
+                            <a data-toggle="collapse" href="#widget-1" role="button" aria-expanded="true" aria-controls="widget-1">
+                                Category
+                            </a>
+                        </h3><!-- End .widget-title -->
+
+                        <div class="collapse show" id="widget-1">
+                            <div class="widget-body">
+                                <div class="filter-items filter-items-count">
+                                    @foreach (var item in SV21T1080007.BusinessLayers.CommonDataService.ListCategoryNotParam())
+                                    {
+                                        <div class="filter-item">
+                                            <div class="custom-control custom-checkbox">
+                                                <a href="javascript:;" class="nav-link link-category" data-categoryid="@item.CategoryID">@item.CategoryName</a>
+                                            </div>
+                                        </div><!-- End .filter-item -->
+                                    }
+                                </div><!-- End .filter-items -->
+                            </div><!-- End .widget-body -->
+                        </div><!-- End .collapse -->
+                    </div><!-- End .widget -->
+
+                </div><!-- End .sidebar sidebar-shop -->
+            </aside><!-- End .col-lg-3 -->
+        </div><!-- End .row -->
+    </div><!-- End .container -->
+</div><!-- End .page-content -->
+
+<script>
+    $(document).ready(function () {
+    function LoadProduct(categoryID, Page) {
+        $.ajax({
+            url: '/Product/GetProductByCategory',
+            type: 'GET',
+            data: { categoryid: categoryID, page: Page },
+            success: function (res) {
+                $('.col-lg-9').html(res);
+            },
+            error: function (err) {
+                console.log("Lỗi: " + err);
+            }
+        });
+    }
+
+    $(document).on('click', '.link-category', function () {
+        $('.link-category').removeClass('active');
+        $(this).addClass('active');
+        let id = $(this).data('categoryid');
+        LoadProduct(id, 1);
+    });
+
+    $(document).on('click', '.page-link', function () {
+        let categoryID = $('.link-category.active').data('categoryid');
+        let page = $(this).data('page');
+        LoadProduct(categoryID, page);
+    });
+
+    LoadProduct(0, 1);
+
+    function AddToCart(productID) {
+        $.ajax({
+            url: '/Cart/AddToCart',
+            method: 'GET',
+            data: { productid: productID },
+            success: function (res) {
+                toastr.success('Thêm sản phẩm vào giỏ hàng thành công!');
+                $('.dropdown-menu-right').html(res);
+                let count = $('#count-cart').val();
+                    $('.cart-count').text(count);
+            },
+            error: function (err) {
+                console.log('err: ' + err);
+            }
+        });
+    }
+
+    $(document).on('click', '.btn-cart', function () {
+        let id = $(this).data('productid');
+        AddToCart(id);
+    });
+});
+
+</script>
+

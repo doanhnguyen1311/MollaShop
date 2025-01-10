@@ -1,0 +1,35 @@
+.toast {
+    max-width: 450px !important;
+    color: white !important;
+    font-size: 14px;
+}
+
+.toast-success {
+    background-color: #28a100 !important;
+    /* Màu nền xanh lá */
+    color: #fff !important;
+    /* Màu chữ trắng */
+}
+
+.toast-error {
+    background-color: #dc3545 !important;
+    /* Màu nền đỏ */
+    color: #fff !important;
+    /* Màu chữ trắng */
+}
+
+.toast-info {
+    /* Thay .toastr-info thành .toast-info */
+    background-color: #007bff;
+    /* Màu nền Primary */
+    color: white;
+    /* Màu chữ */
+}
+
+.toast-warning {
+    /* Thay .toastr-warning thành .toast-warning */
+    background-color: #ffc107 !important;
+    /* Màu vàng cảnh báo */
+    color: black;
+    /* Màu chữ */
+}

@@ -1,0 +1,66 @@
+﻿@model IEnumerable<CartItem>
+
+@{
+	Layout = null;
+}
+	<div class="summary">
+		<h3 class="summary-title">Đơn hàng của bạn</h3><!-- End .summary-title -->
+
+		<table class="table table-summary">
+			<thead>
+				<tr>
+					<th>Sản phẩm</th>
+					<th>Tổng tiền</th>
+				</tr>
+			</thead>
+		@{
+			decimal totalPrice = 0;
+		}
+			<tbody>
+				@foreach (var item in Model)
+				{
+					<tr>
+						<td><a>@item.ProductName</a></td>
+						<td>@item.SalePrice.ToString("C0", new System.Globalization.CultureInfo("vi-VN")) <br /> SL: @item.Quantity</td>
+					</tr>
+
+					totalPrice += item.SalePrice * item.Quantity;
+				}
+				<tr class="summary-subtotal">
+					<td>Tổng tiền:</td>
+					<td>@totalPrice.ToString("C0", new System.Globalization.CultureInfo("vi-VN"))</td>
+				</tr><!-- End .summary-subtotal -->
+				<tr>
+					<td>Shipping:</td>
+				<td>Miễn phí</td>
+				</tr>
+				<tr class="summary-total">
+				
+					<td>Tổng hóa đơn:</td>
+				<td>@totalPrice.ToString("C0", new System.Globalization.CultureInfo("vi-VN"))</td>
+				</tr><!-- End .summary-total -->
+			</tbody>
+		</table><!-- End .table table-summary -->
+
+		<div class="accordion-summary" id="accordion-payment">
+			<div class="card">
+				<div class="card-header" id="heading-1">
+					<h2 class="card-title">
+						<a role="button" data-toggle="collapse" href="#collapse-1" aria-expanded="true" aria-controls="collapse-1">
+							Chuyển khoản trực tiếp
+						</a>
+					</h2>
+				</div><!-- End .card-header -->
+				<div id="collapse-1" class="collapse show" aria-labelledby="heading-1" data-parent="#accordion-payment">
+					<div class="card-body">
+						Chuyển khoản trực tiếp vào tài khoản 0788459780 - MB bank
+					</div><!-- End .card-body -->
+				</div><!-- End .collapse -->
+			</div><!-- End .card -->
+		</div><!-- End .accordion -->
+
+		<button type="submit" class="btn btn-outline-primary-2 btn-order btn-block">
+			<span class="btn-text" >Thanh toán</span>
+			<span class="btn-hover-text">Thanh toán hóa đơn</span>
+		</button>
+	</div><!-- End .summary -->

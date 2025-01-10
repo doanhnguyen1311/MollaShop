@@ -1,0 +1,31 @@
+﻿@model ProductSearchResult
+@{
+    Layout = null;
+}
+<div class="dropdown-cart-products">
+    @if (Model.Data.Count > 0)
+    {
+        @foreach (var item in Model.Data)
+        {
+            <div class="product" style="display: flex;">
+                <div class="product-cart-details" style="margin-right: 5px;">
+                    <h4 class="product-title">
+                        <a href="~/Product/Details/@item.ProductID" style="font-size: 10px;">@item.ProductName</a>
+                    </h4>
+                </div><!-- End .product-cart-details -->
+                
+                <figure class="product-image-container">
+                    <a href="~/Product/Details/@item.ProductID" class="product-image">
+                        <img style="height: 100px;" src="@(string.IsNullOrWhiteSpace(item.Photo) ? "/images/employees/no-photo.png" : item.Photo)" alt="product">
+                    </a>
+                </figure>
+            </div>
+
+            <!-- End .product -->
+        }
+    }
+    else
+    {
+        <p>Không có sản phẩm cần tìm</p>
+    }
+</div><!-- End .dropdown-cart-product -->

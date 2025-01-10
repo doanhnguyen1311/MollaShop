@@ -1,0 +1,101 @@
+﻿@model IEnumerable<Order>
+@{
+    ViewBag.Title = "Đơn hàng";
+}
+
+<style>
+    .btn-sm {
+        padding: 3px 6px; /* Giảm chiều cao và chiều rộng */
+        font-size: 12px; /* Giảm kích thước chữ */
+    }
+</style>
+<form id="filterForm" class="p-4 bg-light rounded shadow">
+    <h5 class="mb-4 text-center">Tìm kiếm đơn hàng</h5>
+    <div class="form-row">
+        <!-- Ngày bắt đầu -->
+        <div class="form-group col-md-6">
+            <label for="startDate">Từ ngày:</label>
+            <input type="date" id="startDate" name="startDate" class="form-control">
+        </div>
+        <!-- Ngày kết thúc -->
+        <div class="form-group col-md-6">
+            <label for="endDate">Đến ngày:</label>
+            <input type="date" id="endDate" name="endDate" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <!-- Từ khóa -->
+        <div class="form-group col-md-6">
+            <label for="keyword">Từ khóa:</label>
+            <input type="text" id="keyword" name="keyword" class="form-control" placeholder="Nhập từ khóa">
+        </div>
+        <!-- Trạng thái -->
+        <div class="form-group col-md-6">
+            <label for="status">Trạng thái:</label>
+            <select id="status" name="status" class="form-control">
+                <option value="">Tất cả</option>
+                <option value="-2">Đơn hàng bị từ chối</option>
+                <option value="-1">Đơn hàng đã bị hủy</option>
+                <option value="1">Đơn hàng mới - Chờ được duyệt</option>
+                <option value="2">Đơn hàng đã chấp nhận</option>
+                <option value="3">Đơn hàng đang được vận chuyển</option>
+                <option value="4">Đơn hàng đã hoàn tất</option>
+
+            </select>
+        </div>
+    </div>
+
+    <!-- Nút tìm kiếm -->
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary btn-block btn-search-order">Tìm kiếm</button>
+    </div>
+</form>
+<div id="searchResult">
+
+</div>
+
+<script>
+
+    document.getElementById('filterForm').addEventListener('submit', function (e) {
+        const startDate = document.getElementById('startDate').value;
+        const endDate = document.getElementById('endDate').value;
+        const datePattern = /^\d{2}\/\d{2}\/\d{4}$/;
+
+        if ((startDate && !datePattern.test(startDate)) || (endDate && !datePattern.test(endDate))) {
+            e.preventDefault(); // Ngăn gửi form
+            alert('Vui lòng nhập ngày đúng định dạng dd/mm/yyyy.');
+        }
+    });
+
+    $(document).ready(function () {
+        function Search(Status, Fromtime, Totime, SearchValue) {
+            $.ajax({
+                url: '/Checkout/Search',
+                method: 'GET',
+                data: {status: Status, 
+                        fromtime: Fromtime,
+                        toTime : Totime,
+                        searchValue: SearchValue
+                },
+                success: function(res){
+                    $('#searchResult').html(res)
+                },
+                error: function(err){
+                    console.log(err);
+                }
+            });
+        }
+
+        $(document).on('click', '.btn-search-order', function (e) {
+            e.preventDefault();
+            let status = $('#status').val();
+            let FromTime = $('#startDate').val();
+            let ToTime = $('#endDate').val();
+            let searchValue = $('#keyword').val();
+            Search(status, FromTime, ToTime, searchValue);
+        });
+
+        Search(0, null, null, "");
+    });
+</script>

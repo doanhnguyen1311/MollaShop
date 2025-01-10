@@ -1,0 +1,145 @@
+﻿@{
+    ViewBag.Title = "Thông tin người dùng";
+    var data = ApplicationContext.GetSessionData<Customer>("user") ?? new Customer();
+}
+<style>
+    /* Nền mờ khi form hiển thị */
+    #changePasswordFormContainer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Nền mờ */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000; /* Đặt form trên cùng */
+    }
+
+    .form-box {
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 400px; /* Độ rộng form */
+        text-align: center;
+    }
+</style>
+
+<div class="page-content">
+    <div class="checkout">
+        <div class="container">
+            <div class="checkout-discount">
+                @*
+                <form action="#">
+                <input type="text" class="form-control" required id="checkout-discount-input">
+                <label for="checkout-discount-input" class="text-truncate">Have a coupon? <span>Click here to enter your code</span></label>
+                </form> *@
+            </div><!-- End .checkout-discount -->
+            <form action="~/Auth/SaveInfo" method="post">
+                <div class="col-lg-13">
+                    <h2 class="checkout-title">Thông tin người dùng</h2><!-- End .checkout-title -->
+                    <input type="hidden" value="@data.CustomerID" name="@nameof(data.CustomerID)" />
+                    <label>Họ tên khách hàng</label>
+                    <input type="text" name="@nameof(data.CustomerName)" class="form-control" value="@data.CustomerName" required />
+                    @Html.ValidationMessage(nameof(Model.CustomerName), new { @style = "color: red" })
+                    <label>Tên hợp đồng</label>
+                    <input value="@data.ContactName" name="@nameof(data.ContactName)" type="text" class="form-control" required>
+                    @Html.ValidationMessage(nameof(Model.ContactName), new { @style = "color: red" })
+                    <label>Địa chỉ</label>
+                    <input type="text" value="@(data.Address != null ? $"{data.Address}" : "")" name="@nameof(data.Address)" class="form-control" placeholder="" required>
+                    @Html.ValidationMessage(nameof(Model.Address), new { @style = "color: red" })
+                    <label>Tỉnh thành </label>
+                    <div class="form-group">
+                        <select class="form-control" id="register-province" name="@nameof(data.Province)" required>
+                            <option value="@data.Province" selected>@data.Province</option>
+                            @foreach (var item in SV21T1080007.BusinessLayers.CommonDataService.ListOfProvince())
+                            {
+                                <option value="@item.ProvinceName">@item.ProvinceName</option>
+                            }
+                        </select>
+                    </div><!-- End .form-group -->
+                    @Html.ValidationMessage(nameof(Model.Province), new { @style = "color: red" })
+                    <label>Số điện thoại </label>
+                    <input type="tel" value="@data.Phone" class="form-control" name="@nameof(data.Phone)" required>
+                    @Html.ValidationMessage(nameof(Model.Phone), new { @style = "color: red" })
+                    <label>Email</label>
+                    <input type="email" value="@data.Email" class="form-control" name="@nameof(data.Email)" required>
+                    @Html.ValidationMessage(nameof(Model.Email), new { @style = "color: red" })
+                    <a class="custom-control-label nav-link" style="cursor: pointer; color: #cc9966;" onclick="showChangePasswordForm()">Đổi mật khẩu?</a>
+                </div><!-- End .col-lg-9 -->
+
+                <button class="btn btn-outline-success" type="submit">Lưu thay đổi</button>
+            </form>
+
+            @* modal *@
+            <div id="changePasswordFormContainer" style="display: none;">
+                <div class="form-box">
+                    <h3>Đổi mật khẩu</h3>
+                    <form>
+                        <div class="mb-3">
+                            <label for="currentPassword">Mật khẩu hiện tại</label>
+                            <input type="password" id="currentPassword" name="currentPassword" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="newPassword">Mật khẩu mới</label>
+                            <input type="password" id="newPassword" name="newPassword" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmPassword">Nhập lại mật khẩu</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn-change-pass btn btn-primary">Xác nhận</button>
+                    </form>
+                    <button onclick="hideChangePasswordForm()" class="btn btn-secondary mt-2">Đóng</button>
+                </div>
+            </div>
+        </div><!-- End .container -->
+    </div><!-- End .checkout -->
+</div><!-- End .page-content -->
+
+
+<script>
+    function showChangePasswordForm() {
+        const formContainer = document.getElementById('changePasswordFormContainer');
+        formContainer.style.display = 'flex';
+    }
+
+    function hideChangePasswordForm() {
+        const formContainer = document.getElementById('changePasswordFormContainer');
+        formContainer.style.display = 'none';
+    }
+
+    $(document).ready(function () {
+        function ChangePassword(currentPass, newPass, confirmPass){
+            $.ajax({
+                url: 'ChangePassword',
+                method: 'GET',
+                data: {current: currentPass, newP: newPass, confirm: confirmPass},
+                success: function(res){
+                    if(res.success){
+                        toastr.success(res.message);
+                    }
+                    else{
+                        toastr.error(res.message);
+                    }
+                },
+                error: function(err){
+                    console.log(err);
+                }
+            });
+        }
+
+        $(document).on('click', '.btn-change-pass', function (e) {
+            e.preventDefault();
+            let current = $('#currentPassword').val();
+            let newP = $('#newPassword').val();
+            let confirm = $('#confirmPassword').val();
+
+            ChangePassword(current, newP, confirm);
+        });
+    });
+
+
+</script>

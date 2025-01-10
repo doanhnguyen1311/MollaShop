@@ -1,0 +1,97 @@
+﻿@{
+    ViewBag.Title = "Giỏ hàng";
+}
+<style>
+    .table .total-col {
+        color: #c96;
+        font-weight: 400;
+        font-size: 1.4rem;
+    }
+
+    .table td {
+        font-size: 1.4rem;
+    }
+</style>
+<div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+    <div class="container">
+        <h1 class="page-title">Giỏ hàng<span>Shop</span></h1>
+    </div><!-- End .container -->
+</div><!-- End .page-header -->
+<nav aria-label="breadcrumb" class="breadcrumb-nav">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="~/Home">Trang chủ</a></li>
+            <li class="breadcrumb-item"><a href="~/Product">Sản phẩm</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Giỏ hàng</li>
+        </ol>
+    </div><!-- End .container -->
+</nav><!-- End .breadcrumb-nav -->
+
+<div class="page-content">
+    <div class="cart">
+        <div class="container" id="cart">
+        </div><!-- End .container -->
+    </div><!-- End .cart -->
+</div><!-- End .page-content -->
+
+
+<script>
+    $(document).ready(function () {
+        function LoadFromCart() {
+            $.ajax({
+                url: '/Cart/CartItem',
+                method: 'GET',
+                success: function (res) {
+                    $('#cart').html(res);
+                },
+                error: function (err) {
+                    console.log("Lỗi ở Product/Cart" + err);
+                }
+            });
+        }
+        LoadFromCart();
+
+        function UpdateFromCart(productID, Quantity) {
+            $.ajax({
+                url: '/Cart/UpdateQuantity',
+                mehtod: 'GET',
+                data: { productid: productID, quantity: Quantity },
+                success: function (res) {
+                },
+                error: function (err) {
+                    console.log("Lỗi ở cart/Index " + err);
+                }
+            });
+        }
+
+        $(document).on('input', '.cart-quantity', function () {
+            let id = $(this).data('productid');
+            let quantity = $(this).val();
+            UpdateFromCart(id, quantity);
+        });
+
+        $(document).on('click', '.btn-update-cart', function () {
+            LoadFromCart();
+            toastr.success('Cập nhật giỏ hàng thành công!');
+        });
+
+        function RemoveCart(productID) {
+            $.ajax({
+                url: '/Cart/RemoveCart',
+                method: 'GET',
+                data: { productid: productID },
+                success: function (res) {
+                    LoadFromCart();
+                },
+                error: function (err) {
+                    console.log("err: " + err);
+                }
+            });
+        }
+
+        $(document).on('click', '.btn-remove', function () {
+            let id = $(this).data('productid');
+            RemoveCart(id);
+        });
+    });
+</script>

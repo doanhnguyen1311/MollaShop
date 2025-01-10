@@ -1,0 +1,54 @@
+﻿@model IEnumerable<OrderDetail>
+@{
+
+    ViewBag.Title = "Chi tiết đơn hàng";
+}
+
+<table class="table table-cart table-mobile">
+    <thead>
+        <tr>
+            <th>Mã Đơn hàng</th>
+            <th>Mã Sản phẩm</th>
+            <th>Tên Sản phẩm</th>
+            <th>Ảnh</th>
+            <th>Đơn vị</th>
+            <th>Số lượng</th>
+            <th>Giá bán</th>
+            <th>Tổng tiền</th>
+        </tr>
+    </thead>
+
+    <tbody class="cart-tbody">
+        @if (Model.Count() > 0)
+        {
+            decimal totalCheckout = 0;
+            @foreach (var item in Model)
+            {
+
+                var product = ProductDataService.GetProduct(item.ProductID);
+                totalCheckout += item.TotalPrice;
+                <tr>
+                    <td>@item.OrderID</td>
+                    <td>@item.ProductID</td>
+                    <td>@product.ProductName</td>
+                    <td>
+                        <img src="@(string.IsNullOrWhiteSpace(product.Photo) ? "/images/employees/no-photo.png" : product.Photo)" alt="@product.ProductName" style="width: 50px; height: auto;" />
+                    </td>
+                    <td>@item.Unit</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.SalePrice.ToString("C0", new System.Globalization.CultureInfo("vi-VN"))</td>
+                    <td>@item.TotalPrice.ToString("C0", new System.Globalization.CultureInfo("vi-VN"))</td>
+                </tr>
+            }
+            <tr>
+                <td>Tổng đơn hàng: @totalCheckout.ToString("C0", new System.Globalization.CultureInfo("vi-VN"))</td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="8">Không có chi tiết đơn hàng nào!</td>
+            </tr>
+        }
+    </tbody>
+</table><!-- End .table table-cart -->
